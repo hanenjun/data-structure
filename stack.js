@@ -1,4 +1,4 @@
-var stack = function (){
+var Stack = function (){
     var item = [];
     //入栈
     this.push = function(element){
@@ -6,7 +6,7 @@ var stack = function (){
     }
     //出栈
     this.pop = function(){
-        item.pop()
+       return item.pop()
     }
     //检查item
     this.get = function (){
@@ -28,4 +28,20 @@ var stack = function (){
     this.size = function (){
         return item.length
     }
+}
+// 十进制转二进制
+var div = function (number){
+    var stack=  new Stack()
+    var yushu
+    var str = ''
+    while (number>0) {
+    yushu = number % 2
+
+    stack.push(yushu)
+    number = Math.floor(number / 2)
+    }
+   while(!stack.isEmpty()){
+        str+=stack.pop()
+   }
+   return str
 }
