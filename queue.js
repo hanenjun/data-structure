@@ -39,5 +39,29 @@ var chuanhua = function(names,num){
     }
     return queue.dequeue()
 }
-console.log(chuanhua(names,num))
+// console.log(chuanhua(names,num))
 
+var PriorityQueue = function(){
+    var item = []
+    var QueueItem = function(element,priority){
+        this.element = element
+        this.priority = priority
+    }
+    this.enqueue = function(element,priority){
+        var queueItem = new   QueueItem(element,priority)
+        var addid = false
+        for(var i =0;i<item.length;i++){
+            if(queueItem.priority>item[i].priority){
+                item.splice(i,0,queueItem)
+                addid = true
+                break
+            }
+        }
+        if(!addid){
+            item.push(queueItem)
+        }
+    }
+    this.get =function (){
+        return item
+    }
+}
