@@ -34,7 +34,7 @@ var Set = function (){
         var arr = []
         for (var key in items) {
             if (this.has(key)) {
-                arr.push(items[ley])
+                arr.push(items[key])
             }
         }
         return arr
@@ -70,5 +70,25 @@ var Set = function (){
             }
         }
         return resultSet
+    }
+    this.forEach = function(callBack){
+        var arr = this.value()
+        for(var i = 0; i < arr.length; i++){
+            callBack(arr[i],i)
+        }
+    }
+    this.entire = function(){
+        var arr = []
+        var i =0;
+        for (var key in items) {
+            arr.push({[key]:items[key]})
+        }
+        return {
+           next:function(){
+                var value = Object.entries(arr[i])
+                i++ 
+                return value[0]
+            }
+        }
     }
 }
